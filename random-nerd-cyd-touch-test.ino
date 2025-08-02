@@ -8,7 +8,7 @@
     The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
 /* 
-    This example also tested with ESP32-2432SO28 from amazon (shameless link here) 
+    This example also tested with ESP32-2432SO28 from amazon (shameless link here) https://amzn.to/3IRPpGp <- use it to buy your CYD and we'll pay the electric bill and keep the lights on for more projects. 
 */
 
 #include <SPI.h>
