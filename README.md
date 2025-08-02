@@ -58,7 +58,14 @@ Additional Features
 - [Random Nerd Tutorials](https://randomnerdtutorials.com/cheap-yellow-display-esp32-2432s028r/) is a great place to get some familiarity - test programs.. an sanity with the CYD Boards. 
 
 ## Software Setup
+I use AI to walk me through alot of this.. here's a good [conversation overivew with Gemini](https://g.co/gemini/share/38730353e192) but in brief here is my self reminder howto
 1. Load the [Arduio IDE](https://www.arduino.cc/en/software/)  -- its free or grab the Cloud Arduino (its not free but nice if you use it a-lot across multiple computers.)
-2. Load the libraries needed to work with the Display - Several good tutorial from [Random Nerd Tutorials](https://randomnerdtutorials.com/ on how to work with these displays including a proper download User_Setup.h which you'll need to update to get the CYD working
+2. You'll need to install several libraries through the Arduino IDE's Library Manager (Sketch > Include Library > Manage Libraries):
+    a. TFT_eSPI: This library handles the display. Make sure to get the one by Bodmer.
+        configure the User-Setup.h remembering to lower the touch SPI frequency
+    b. XPT2046_Touchscreen: This library is for the touch controller on the CYD.
+    c. LVGL: Install the LVGL library by kisvegabor.
+        configure the lv_conf.h correctly
+3. Load the libraries needed to work with the Display - Several good tutorial from [Random Nerd Tutorials](https://randomnerdtutorials.com/ on how to work with these displays including a proper download User_Setup.h which you'll need to update to get the CYD working
 - IF DISPLAY WORKS BUT TOUCH IS NOT WORKING -- if you are using the [Amazon CYD displays](https://amzn.to/3IRPpGp) with the [Random Nerd Tutorials](https://randomnerdtutorials.com/cheap-yellow-display-esp32-2432s028r/), Don't forget to slow down the SPI_FREQUENCY to 27MHZ so that touch will work. 
-3. 
+4. load the motor-man-ui.ino
