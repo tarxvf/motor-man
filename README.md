@@ -30,17 +30,35 @@ Additional Features
 ###Software:
 1. This uses the Arduino IDE.
 
-###Hardware
-1. A Cheap Yellow Display (CYD). Many available on the market. Typically its actually called an "ESP32-2432SO28R" so you can see why .. it gets shortened to CYD.  We usually get 2 for half the price of a steak at Ruth Chris on that Jungle store [->here<-](https://amazon.com)
+###Hardware - These have Amazon links.. when you use these, we put just use the ripple in fundage that to make more projects and tutorials here at the farm. 
+
+###Hardware:
+1. A [Cheap Yellow Display]() (CYD). Many available on the market. Its actually called an "ESP32-2432SO28R" or oddly "ES32-2432SO28" so you can see why .. it gets shortened to CYD.  You can get 2 for half the price of a steak at Ruth Chris on that Jungle store [->here<-](https://amzn.to/3IRPpGp) - The ones I received came without the "R" which is supposed to mean it has the resistive display.. however this unit does have the touch chip and the touch displays do work. 
+
+    1a. biggest issue is that the default SPI_FREQUENCY in the user setup. For whatever reason it defaults to 55MHz. change this to 27MHZ which is the max speed of the touch controller
+```
+...
+// #define SPI_FREQUENCY  20000000
+#define SPI_FREQUENCY  27000000
+// #define SPI_FREQUENCY  40000000
+// #define SPI_FREQUENCY  55000000 // STM32 SPI1 only (SPI2 maximum is 27MHz)
+```
+
+    1b. Arduino Module set it to ESP-WROOM32-DA
+    1c. the port defaults to weird baud rates by default and can't upload due to that. Change it in tools -> upload speed -> 460800
+
+    1d. NOW the test program from random nerd tutorial `cyd-touch-test.ino` to test the touch screen should work. 
 2. A not too cheap max 3232 chip to adjust the 3.3 volt serial communication levels to TTL (and sometimes reverse TTL signal levels.)
-3. A curtis XXX 500 Amp motor controller. I don't know why but there are now many knock offs on the market. An original from Curtis will run you around the cost of a Tank of Gas for your Boat.. Highly recommend for any serious applications.  A knock off like this Vevor Model you can score on Amazon for around the cost of a Movie Ticket and includes a 2 year warranty. I decided to go this route as I needed one on the bench for R&D and the other in the cart for "Road Testing" - and if my project went crazy, I was only destroying a knock off and there were no good movies out this summer anyway..
+3. A [curtis 1205-117 motor controller](https://amzn.to/3ILqwMN). You can get the lower capacity cheaper model, or just get this half the price - twice the capacity and limit the current to your carts capabilities. I don't know why but there are now many knock offs on the market. An original from Curtis will run you around the cost of a Tank of Gas for your Boat.. Highly recommend for any serious applications.  A knock off like this [Vevor 36V DC Motor Controller 1205-117](https://amzn.to/3ILqwMN) you can score on Amazon for around the cost of a Movie Ticket and includes a 2 year warranty. I decided to go this route as I needed one on the bench for R&D and the other in the cart for "Road Testing" - And if my project went haywaire, I was only destroying a knock off and there were no good movies out this summer anyway..
 4. A Single Pull Double Throw 36/48Volt Relay (SPDT) if you want to use the forward reverse feature. 
 
 ###Additional resources: 
 - Buggies gone wild has many of the control codes from the curtis controllers. The ones I have used and the control mechanism itself in this project were garnered from the thread in the user groups.
-- Scott at CartsUnlimited.net -> highest recommends here.. This project is not for converting your cart.. If you are doing a conversion and are not electrically inclined, consider getting one of the carts unlimited quality kits.. These kits have everything you need to do a conversion with wiring diagrams and quality components. You will save time and money (and friends and hair) straight up buying one of these conversion kits. Plus you get Scott supporting your conversion.
+- Scott at [CartsUnlimited.net](CartsUnlimited.net) -> highest recommends here.. This project is not for converting your cart.. If you are doing a conversion and are not electrically inclined, consider getting one of the carts unlimited COMPLETE quality kits.. These kits have everything you need to do a conversion with wiring diagrams and quality components. You will save time and money (and friends and hair) straight up buying one of these conversion kits. Plus you get Scott supporting your conversion.
+- [Random Nerd Tutorials](https://randomnerdtutorials.com/cheap-yellow-display-esp32-2432s028r/) is a great place to get some familiarity - test programs.. an sanity with the CYD Boards. 
 
 ## Software Setup
 1. Load the [Arduio IDE](https://www.arduino.cc/en/software/)  -- its free or grab the Cloud Arduino (its not free but nice if you use it a-lot across multiple computers.)
-2. Load the libraries needed to work with the Display - Several good tutorial from [nerd]() on how to work with these displays including a proper download User_Setup.h which you'll need to update to get the CYD working
+2. Load the libraries needed to work with the Display - Several good tutorial from [Random Nerd Tutorials](https://randomnerdtutorials.com/ on how to work with these displays including a proper download User_Setup.h which you'll need to update to get the CYD working
+- IF DISPLAY WORKS BUT TOUCH IS NOT WORKING -- if you are using the [Amazon CYD displays](https://amzn.to/3IRPpGp) with the [Random Nerd Tutorials](https://randomnerdtutorials.com/cheap-yellow-display-esp32-2432s028r/), Don't forget to slow down the SPI_FREQUENCY to 27MHZ so that touch will work. 
 3. 

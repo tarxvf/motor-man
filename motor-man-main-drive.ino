@@ -1,7 +1,7 @@
 // ESP32 program to poll multiple values from a Curtis 1205M controller
 // and interact with another ESP-NOW device for setting parameters and broadcasting data.
 // Modified for CYD (Color Yellow Display) with GUI and menu navigation.
-//
+// This controller could be on the dash and wired to the Motor Controller via a Max2323 chip 
 // IMPORTANT NOTES:
 // 1. Parameter Codes: You MUST replace the "XXXX", "YYYY", "ZZZZ" placeholders
 //    with the actual 4-character hex parameter codes for your specific Curtis 1205M model
